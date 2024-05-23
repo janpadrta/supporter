@@ -1,0 +1,36 @@
+<div class="zerogrid">
+  <div class="col-2-3">
+    <div class="contact">
+      <div id="contact_form">
+        <%= form_with(model: team, id: "ff") do |f| %>
+          <% if team.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+              <ul>
+                <% team.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <label class="row">
+            <div class="col-2-2">
+              <div class="wrap-col">
+                <div>
+                  <%= f.label :name %>
+                  <%= f.text_field :name %>
+                </div>
+              </div>
+            </div>
+          </label>
+
+          <div>
+            <%= f.submit 'Create', class: "sendButton" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

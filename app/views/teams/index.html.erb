@@ -1,0 +1,31 @@
+<h1>Teams</h1>
+
+<%= link_to "New team", new_team_path %>
+
+<%= search_form_for @q do |f| %>
+  <table class="pure-table">
+    <thead>
+      <tr>
+        <td></td>
+        <td><%= f.search_field :name_cont %></td>
+        <td width="100px"><%= f.submit 'Najdi', class: "sendButton" %></td>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th><%= sort_link(@q, :id) %></th>
+        <th><%= sort_link(@q, :name) %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @teams.each_with_index do |team, i| %>
+        <tr class="<%= 'pure-table-odd' if i % 2 == 0 %>">
+          <td><%= team.id %></td>
+          <td><%= team.name %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

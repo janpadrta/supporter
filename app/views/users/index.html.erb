@@ -6,19 +6,20 @@
   <table class="pure-table">
     <thead>
       <tr>
-        <td><%= f.label :name_cont %></td>
+        <td></td>
         <td><%= f.search_field :name_cont %></td>
-        <td><%= f.submit 'Najdi', class: "contact sendButton" %></td>
+        <td id="" colspan="2"><%= f.submit 'Najdi', class: "sendButton" %></td>
       </tr>
     </thead>
     <thead>
       <tr>
-        <th>id <%= sort_link(@q, :id) %></th>
-        <th>Name <%= sort_link(@q, :name) %></th>
-        <th>Admin</th>
-        <th>Technical</th>
-        <th>Team Leader</th>
-        <th>Approver</th>
+        <th><%= sort_link(@q, :id) %></th>
+        <th><%= sort_link(@q, :name) %></th>
+        <th><%= sort_link(@q, :admin) %></th>
+        <th><%= sort_link(@q, :technical) %></th>
+        <th><%= sort_link(@q, :team_leader) %></th>
+        <th><%= sort_link(@q, :approver) %></th>
+        <th><%= sort_link(@q, :team_id) %></th>
       </tr>
     </thead>
     <tbody>
@@ -30,6 +31,7 @@
           <td><%= yes_no user.technical %></td>
           <td><%= yes_no user.team_leader %></td>
           <td><%= yes_no user.approver %></td>
+          <td><%= user.team&.name %></td>
         </tr>
       <% end %>
     </tbody>

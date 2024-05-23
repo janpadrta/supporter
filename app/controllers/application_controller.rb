@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
     redirect_to :root, alert: "You have no access here..." unless current_user.admin?
   end
 
+  def leader_required!
+    redirect_to :root, alert: "You have no access here..." unless current_user.is_leader?
+  end
+
   def zapis_uzivatele_do_logu
     string = "\n-----------------------------------------------------\n"
     string += "V #{Time.zone.now.strftime('%d.%m.%Y %H:%M:%S')} provadi uzivatel #{current_user.blank? ? 'neprihlasen' : current_user.name} (#{request.env['REMOTE_HOST']}) "

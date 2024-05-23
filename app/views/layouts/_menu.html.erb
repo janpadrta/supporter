@@ -3,7 +3,7 @@
         <ul>
          <% if current_user %>
            <li><a><span><%= current_user.name %></span></a></li>
-           
+
            <!--<li class=' has-sub'><a href='#'><span>Category</span></a>
             <ul>
              <li class='has-sub'><a href='#'><span>Item 1</span></a>
@@ -22,7 +22,7 @@
            </li>-->
 
            <li><%= link_to 'Users', users_path %></li>
-           <li><a href='single.html'><span>About</span></a></li>
+           <li><%= link_to 'Teams', teams_path if current_user.is_leader? %></li>
            <li class='last'><%= link_to 'Log out', user_session_path(current_user), data: { turbo_method: :delete } %></li>
          <% else %>
             <li><%= link_to 'Login', new_user_session_path %></li>
