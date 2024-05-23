@@ -1,0 +1,71 @@
+<h1>New user</h1>
+
+<div class="zerogrid">
+	<div class="col-2-3">
+		<div class="contact">
+				<div id="contact_form">
+				<%= form_with model: @user, id: 'ff' do |f| %>
+				  <% if @user.errors.any? %>
+				    <div>
+				      <ul>
+				        <% @user.errors.full_messages.each do |message| %>
+				          <li><%= message %></li>
+				        <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+					<label class="row">
+						<div class="col-2-2">
+							<div class="wrap-col">
+							  <div>
+							    <%= f.label :name %>
+							    <%= f.text_field :name %>
+							  </div>
+							</div>
+						</div>
+					</label>
+					<label class="row">
+						<div class="col-1-2">
+							<div class="wrap-col">
+							  <div>
+							    <%= f.label :password %>
+							    <%= f.password_field :password %>
+							  </div>
+							</div>
+						</div>
+						<div class="col-1-2">
+							<div class="wrap-col">
+							  <div>
+							    <%= f.label :password_confirmation %>
+							    <%= f.password_field :password_confirmation %>
+							  </div>
+							</div>
+						</div>
+					</label>
+					<% [:admin, :technical, :team_leader, :approver].each do |att| %>
+						<label class="row">
+							<div class="col-1-2">
+								<div class="wrap-col">
+								  <div>
+								    <%= f.label att %>
+								  </div>
+								</div>
+							</div>
+							<div class="col-1-2">
+								<div class="wrap-col">
+								  <div>
+					    			<%= f.check_box att %>
+								  </div>
+								</div>
+							</div>
+						</label>
+					<% end %>
+
+				  <p>
+				    <%= f.submit 'Create', class: "sendButton" %>
+				  </p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Supporter</title>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta name="description" content="TechSupport">
+    <meta name="author" content="Jan Padrta">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <%= javascript_importmap_tags %>
+  </head>
+
+<body class="single-page">
+  <div class="wrap-body">
+    <%= render partial: "layouts/menu" %>
+
+    <!--////////////////////////////////////Container-->
+    <section id="container">
+      <div class="wrap-container clearfix">
+        <div id="main-content">
+          <div class="wrap-content">
+            <article class="single-post">
+              <div class="art-content">
+                
+                <%= yield %>
+
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--////////////////////////////////////Footer-->
+    <footer>
+      <div class="copyright">
+        <div class="zerogrid wrapper">
+          Copyright @ TechSupport - Created by Jan Padrta 
+          <ul class="quick-link">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

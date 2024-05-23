@@ -1,0 +1,45 @@
+<h1>Login page</h1>
+
+<div class="zerogrid">
+  <div class="col-2-3">
+    <div class="contact">
+        <div id="contact_form">
+        <%= form_with model: @user, id: 'ff', url: user_sessions_path do |f| %>
+          <% if @user.errors.any? %>
+            <div>
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <label class="row">
+            <div class="col-2-2">
+              <div class="wrap-col">
+                <div>
+                  <%= f.label :name %>
+                  <%= f.text_field :name %>
+                </div>
+              </div>
+            </div>
+          </label>
+          <label class="row">
+            <div class="col-1-2">
+              <div class="wrap-col">
+                <div>
+                  <%= f.label :password %>
+                  <%= f.password_field :password %>
+                </div>
+              </div>
+            </div>
+          </label>
+
+          <p>
+            <%= f.submit 'Login', class: "sendButton" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
