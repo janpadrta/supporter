@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  
   resources :teams
 
   resources :pages, only: [:index]
   
   resources :user_sessions, only: [:new, :create, :destroy]
+  resources :user_to_team, only: [:update, :destroy]
   resources :users, only: [:index, :new, :create]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true)
+    @users = @q.result(distinct: true).includes(:team)
   end
 
   def new
@@ -25,6 +25,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :password, :password_confirmation, :admin, :technical, :team_leader, :approver)
+    params.require(:user).permit(:name, :password, :password_confirmation, :admin, :technical, :team_leader, :approver, :team_id)
   end
 end

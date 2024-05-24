@@ -21,9 +21,15 @@ class User < ApplicationRecord
   has_many :active_sessions, dependent: :destroy
   belongs_to :team, optional: true
 
+  scope :leader, -> { where(team_leader: true) }
+
   def self.ransackable_attributes(auth_object = nil)
-    ["admin", "approver", "id", "id_value", "name", "team_leader", "technical", "team_id"]
+    ["admin", "approver", "id", "id_value", "name", "team_leader", "technical"]
   end
+
+  def self.ransackable_associations(auth_object = nil)
+		["active_sessions", "team"]
+	end
 
   def is_leader?
   	admin? || leader?

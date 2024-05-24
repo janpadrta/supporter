@@ -8,6 +8,7 @@
       <tr>
         <td></td>
         <td><%= f.search_field :name_cont %></td>
+        <td><%= f.search_field :team_name_cont %></td>
         <td id="" colspan="2"><%= f.submit 'Najdi', class: "sendButton" %></td>
       </tr>
     </thead>
@@ -15,11 +16,11 @@
       <tr>
         <th><%= sort_link(@q, :id) %></th>
         <th><%= sort_link(@q, :name) %></th>
+        <th><%= sort_link(@q, :team_name, 'Team name') %></th>
         <th><%= sort_link(@q, :admin) %></th>
         <th><%= sort_link(@q, :technical) %></th>
         <th><%= sort_link(@q, :team_leader) %></th>
         <th><%= sort_link(@q, :approver) %></th>
-        <th><%= sort_link(@q, :team_id) %></th>
       </tr>
     </thead>
     <tbody>
@@ -27,11 +28,11 @@
         <tr class="<%= 'pure-table-odd' if i % 2 == 0 %>">
           <td><%= user.id %></td>
           <td><%= user.name %></td>
+          <td><%= link_to user.team.name, user.team if user.team %></td>
           <td><%= yes_no user.admin %></td>
           <td><%= yes_no user.technical %></td>
           <td><%= yes_no user.team_leader %></td>
           <td><%= yes_no user.approver %></td>
-          <td><%= user.team&.name %></td>
         </tr>
       <% end %>
     </tbody>
