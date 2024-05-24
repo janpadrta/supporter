@@ -7,7 +7,7 @@
   </p>
   <p>
     <strong>Team leader:</strong>
-    <%= @team.name %>
+    <%= @team.print_leader %>
   </p>
 
 </div>
@@ -21,6 +21,7 @@
         <th>Technical</th>
         <th>Team leader</th>
         <th>Approver</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +33,7 @@
           <td><%= yes_no user.technical %></td>
           <td><%= yes_no user.team_leader %></td>
           <td><%= yes_no user.approver %></td>
+          <td><%= link_to 'Remove', user_to_team_path(user_id: user), data: { turbo_method: :delete, confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
