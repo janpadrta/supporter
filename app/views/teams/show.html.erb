@@ -53,7 +53,7 @@
               <div class="wrap-col">
                 <div>
                   <%= label_tag :name %>
-                  <%= select_tag "user[id]", options_from_collection_for_select(User.where.not(team_id: @team), "id", "name"), include_blank: true %>
+                  <%= select_tag "user[id]", options_from_collection_for_select(User.where("team_id <> ? OR team_id IS NULL", @team), "id", "name"), include_blank: true %>
                   <%= hidden_field_tag 'user[team_id]', @team.id %>
                 </div>
               </div>
